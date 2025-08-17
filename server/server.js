@@ -21,7 +21,7 @@ await connectCloudinary();
 
 // ✅ CRITICAL: Set up CORS and cookie parser first
 app.use(cors({
-    origin: 'http://localhost:5173',
+    origin: 'https://green-cart-three-flame.vercel.app/',
     credentials: true
 }));
 
