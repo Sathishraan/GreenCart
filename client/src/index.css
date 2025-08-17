@@ -1,0 +1,72 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Winky+Sans:ital,wght@0,300..900;1,300..900&display=swap');
+
+@import "tailwindcss";
+
+*{
+  font-family: "Winky Sans", sans-serif;
+}
+@theme{
+  --color-primary:#4fbf8b;
+  --color-primary-dull:#44ae7c;
+}
+
+
+.no-scrollbar::-webkit-scrollbar{
+  display: none;
+}
+
+/* Performance optimization CSS to add to your global stylesheet */
+
+/* Prevent layout shifts for images */
+img {
+  aspect-ratio: attr(width) / attr(height);
+  contain: content;
+}
+
+/* Optimize rendering performance for container elements */
+.contain-content {
+  contain: content;
+}
+
+.content-visibility-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 500px;
+}
+
+/* For elements that will animate */
+.will-animate {
+  will-change: transform;
+}
+
+/* Prevent jumpy layouts */
+.lock-height {
+  min-height: 0;
+  max-height: 100%;
+}
+
+/* Optimize reflows during lazy loading */
+.lazy-section {
+  contain: layout style paint;
+}
+
+/* Optimize specific components that might be causing reflows */
+.bestseller-grid,
+.categories-grid,
+.product-grid {
+  contain: layout;
+  contain-intrinsic-size: 0 300px;
+}
+
+/* Only use hardware acceleration for elements that need it */
+.hardware-accelerated {
+  transform: translateZ(0);
+}
+
+/* Optimize transitions */
+.smooth-transition {
+  transition-property: opacity, transform;
+  transition-duration: 0.3s;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
