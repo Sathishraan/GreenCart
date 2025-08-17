@@ -1,7 +1,7 @@
 import { request } from "express";
 import Stripe from "stripe";
 import Order from "../models/Order.js";
-import Product from "../models/product.js";
+import Product from "../models/Product.js";
 import User from "../models/User.js";
 
 
