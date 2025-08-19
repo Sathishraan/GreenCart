@@ -20,13 +20,25 @@ await connectDB();
 await connectCloudinary();
 
 // ✅ CRITICAL: Set up CORS and cookie parser first
-
 app.use(cors({
-    origin: process.env.CLIENT_URL || "http://localhost:5173", // frontend URL
-    credentials: true,  // allow cookies/auth headers
-    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"]
-}));
+    origin: function (origin, callback) {
+      // Allow requests with no origin (mobile apps, Postman, etc.)
+      if (!origin) return callback(null, true);
+      
+      const allowedOrigins = [
+        'https://green-cart-three-flame.vercel.app',
+        'http://localhost:5173',
+        'http://localhost:3000'
+      ];
+      
+      if (allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
+    credentials: true
+  }));
 
 app.use(cookieParser());
 
