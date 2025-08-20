@@ -18,28 +18,11 @@ const app = express();
 
 await connectDB();
 await connectCloudinary();
-
-// ✅ CRITICAL: Set up CORS and cookie parser first
+// ✅ CRITICAL: Set up universal CORS and cookie parser first
 app.use(cors({
-    origin: function (origin, callback) {
-      // Allow requests with no origin (mobile apps, Postman, etc.)
-      if (!origin) return callback(null, true);
-      
-      const allowedOrigins = [
-        'https://green-cart-three-flame.vercel.app',
-        'http://localhost:5173',
-        'http://localhost:3000'
-      ];
-      
-      if (allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error('Not allowed by CORS'));
-      }
-    },
-    credentials: true
-  }));
-
+  origin: true, // This accepts all origins
+  credentials: true
+}));
 app.use(cookieParser());
 
 // ✅ CRITICAL: Add Stripe webhook route BEFORE express.json() middleware
